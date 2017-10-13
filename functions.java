@@ -1,20 +1,47 @@
 package com.company;
 
+import java.util.Scanner;
+
 /**
  * Created by 07517pha on 11/10/2017.
  */
 public class functions {
-    private float domain;
-    private float range;
-    private float area;
+    private double domain;
+    private double range;
+    private double area;
 
-public void
-    public double
+    public void setDomain(double theDomain) {
+        domain = theDomain;
+    }
 
-    public void
-    public double
+    public double getDomain() {
+        return domain;
+    }
 
-    public void
+    public void setRange(double theRange) {
+        range = theRange;
+    }
+
+    public double getRange() {
+        return range;
+    }
+
+    public void setArea(double theArea) {
+        area = theArea;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+
+    //public double xDomain(double x) {
+
+
+
 
 
 }
+
+
+
