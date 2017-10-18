@@ -13,11 +13,12 @@ public class functions {
     private double sinArea;
     private double cosArea;
     private double Acc;
-    private double length1;
-    private double length2;
-    private double width;
-    private double side1;
-    private double side2;
+    private double y1;
+    private double y2;
+    private double area1;
+    private double area2;
+    private double dx;
+    private double rec;
 
     public void setDomain(double d1) {
 
@@ -37,30 +38,34 @@ public class functions {
         return range;
     }
 
-    public void setLinearArea(double acc, double m, double y, double d1, double d2, double a, double gx) {
-
-        length1 = m* d1 + y;
-        length2 = y - gx;
-
-        if(side1 >= length1 )
-        if (side2 <= length1)
-        if (side2 >= d1)
-        if(side2 <= gx)
+    public void setLinearArea(double acc, double b, double d1, double d2, double slope, double gx) {
 
 
-        for (double Acc = acc; Acc > 0; Acc++);
+        area1 =
+        area2 =
 
-        this.linearArea = areaLinear;
+        this.linearArea = b;
+
     }
     public double getLinearArea(){
 
         return linearArea;
     }
 
-    public void setQuadraticArea(double quadraticArea){
+    public void setQuadraticArea(double acc, double d2, double d1, double area1){
 
-        this.linearArea = quadraticArea;
-    }
+        dx = (d2 - d1) / acc;
+        // finds the distance between each rectangle
+
+        for (double Acc = acc; Acc > 0; Acc++){
+            if ((d1 < d2)) {
+                area1 = Acc*Acc*dx;
+                continue;
+            }
+        //determines the height of each rectangle, also adds rectangles until it reaches the user input's number
+
+        this.quadraticArea = area1;
+    }}
     public double getQuadraticArea(){
 
         return quadraticArea;

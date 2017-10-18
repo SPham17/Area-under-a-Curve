@@ -6,8 +6,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        functions area = new functions();
-
+        double area1 = 0;
+        double area2 = 0;
 
         System.out.println("Welcome to Calculating the area under a function\n" +
                 "Please select a function");
@@ -21,54 +21,50 @@ public class Main {
 
         int fx = s.nextInt();
 
-        System.out.println(" Please input an a value");
-        double a = s.nextDouble();
-
         System.out.println(" Please input the slope");
         double slope = s.nextDouble();
 
         System.out.println(" Please input your y-intercept");
-        double y = s.nextDouble();
+        double b = s.nextDouble();
 
         System.out.println(" What is the value of g(x)?");
         double gx = s.nextDouble();
 
         System.out.println(" Set two domains\n " +
-                "d1 = ");
+                "d1 (lower bound) = ");
         double d1 = s.nextDouble();
 
-        System.out.println(" d2 = ");
+        System.out.println(" d2 (higher bound) = ");
         double d2 = s.nextDouble();
 
-        System.out.println(" How accurate would you like to be\n" +
+        System.out.println(" How accurate would you like to be, between" + d1 + " >= x >= " + d2 + "\n "+
                 "acc =");
         double acc = s.nextDouble();
 
-        System.out.println(" Function:"+ fx +
-                "a =" + a +
-                "\nSlope =" + slope +
-                "\ny-intercept = " + y +
+        System.out.println("Function: "+ fx +
+                "\nSlope = " + slope +
+                "\ny-intercept = " + b +
                 "\ng(x) = " + gx +
                 "\nd1 = "+ d1 +
                 "\nd2 = " + d2 +
-                "\n acc = " + acc);
+                "\nacc = " + acc);
 
 
         while (fx != 5) {
 
-            int menu = s.nextInt();
-
-            switch (menu) {
-
-
+            switch (fx) {
 
                 case 1: {
 
 
-                    break;
                 }
                 case 2:
-                    System.out.println("");
+                    System.out.println("Welcome");
+
+                    functions quad = new functions();
+                    quad.setQuadraticArea(acc, d1, d2, area1);
+
+                    System.out.println(" Your area is" + quad.getQuadraticArea());
                 case 3:
                 case 4:
                 case 5:
