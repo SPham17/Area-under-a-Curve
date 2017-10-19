@@ -55,7 +55,8 @@ public class Main {
             switch (fx) {
 
                 case 1: {
-
+                functions areaLinear = new functions();
+                areaLinear.setLinearArea(acc, d1, d2, slope, b, gx);
 
                 }
                 case 2:

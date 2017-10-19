@@ -6,45 +6,44 @@ import java.util.Scanner;
  * Created by 07517pha on 11/10/2017.
  */
 public class functions {
-    private double domain;
-    private double range;
     private double linearArea;
     private double quadraticArea;
     private double sinArea;
     private double cosArea;
+
     private double Acc;
     private double y1;
     private double y2;
     private double area1;
     private double area2;
+    private double total;
     private double dx;
-    private double rec;
+    private double x1;
+    private double x2;
+    private double gxint;
+    private double split;
 
-    public void setDomain(double d1) {
 
-        this.domain = d1;
-    }
-    public double getDomain() {
-
-        return domain;
-    }
-
-    public void setRange(double theRange) {
-
-        this.range = theRange;
-    }
-    public double getRange() {
-
-        return range;
-    }
 
     public void setLinearArea(double acc, double b, double d1, double d2, double slope, double gx) {
 
+        y1 = slope*d1 + b; // y value for domain 1
+        y2 = slope*d2 + b; // y value for domain 2
+        dx = (d2 - d1) / acc; // finds the distance between each rectangle
+        gxint = gx - b / slope; // x intercept for gx and function
+        Acc = Math.abs(d2) + Math.abs(d1) / acc; // determines the amount of rectangles that will be used
 
-        area1 =
-        area2 =
+        for (area1 = area1; d1 < gxint || gxint < d2; acc++) { // for d1 is smaller than the x interecept, keep adding rectangles, stop adding rectangles when acc = d2
+        split = d1 + d2 - gxint; // the point between the two triangles
+            area1 =  dx*y1;// multiplies the distance between each rectangle with each new height
 
-        this.linearArea = b;
+        }
+
+        for (double Acc = acc; Acc > d1 || Acc < d2; Acc++)
+
+            total = area1 + area2;
+
+        this.linearArea = total;
 
     }
     public double getLinearArea(){
