@@ -6,8 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        double area1 = 0;
-        double area2 = 0;
+
 
         System.out.println("Welcome to Calculating the area under a function\n" +
                 "Please select a function");
@@ -21,6 +20,9 @@ public class Main {
 
         int fx = s.nextInt();
 
+        System.out.println(" Please input an a value");
+        double a = s.nextDouble();
+
         System.out.println(" Please input the slope");
         double slope = s.nextDouble();
 
@@ -31,41 +33,54 @@ public class Main {
         double gx = s.nextDouble();
 
         System.out.println(" Set two domains\n " +
-                "d1 (lower bound) = ");
+                "d1 = ");
         double d1 = s.nextDouble();
 
-        System.out.println(" d2 (higher bound) = ");
+        System.out.println(" d2 = ");
         double d2 = s.nextDouble();
 
-        System.out.println(" How accurate would you like to be, between" + d1 + " >= x >= " + d2 + "\n "+
+        System.out.println(" How accurate would you like to be\n" +
                 "acc =");
         double acc = s.nextDouble();
 
-        System.out.println("Function: "+ fx +
-                "\nSlope = " + slope +
+        System.out.println(" Please set a c value");
+        double c = s.nextDouble();
+
+        System.out.println(" Please set a d value");
+        double d = s.nextDouble();
+
+        System.out.println(" Please set a k value");
+        double k = s.nextDouble();
+
+        System.out.println(" Function:"+ fx +
+                "a =" + a +
+                "\nSlope =" + slope +
                 "\ny-intercept = " + b +
                 "\ng(x) = " + gx +
                 "\nd1 = "+ d1 +
                 "\nd2 = " + d2 +
-                "\nacc = " + acc);
+                "\nacc = " + acc +
+                "\nc = " + c +
+                "\nd = " + d +
+                "\nk = " + k);
+
 
 
         while (fx != 5) {
 
-            switch (fx) {
+            int menu = s.nextInt();
+
+            switch (menu) {
+
+
 
                 case 1: {
-                functions areaLinear = new functions();
-                areaLinear.setLinearArea(acc, d1, d2, slope, b, gx);
 
+
+                    break;
                 }
                 case 2:
-                    System.out.println("Welcome");
-
-                    functions quad = new functions();
-                    quad.setQuadraticArea(acc, d1, d2, area1);
-
-                    System.out.println(" Your area is" + quad.getQuadraticArea());
+                    System.out.println("");
                 case 3:
                 case 4:
                 case 5:
