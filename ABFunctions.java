@@ -5,23 +5,31 @@ package com.company;
  */
 public class ABFunctions {
 
-    public enum abFunction {
+    public enum abFunctions {
         LINEAR, QUADRATIC, SINE, COSINE, INVALID}
+            abFunctions abFunctions;
 
-        public void abFunctions(int fx) {
-            switch (fx) {
-                case 1:
+    public void functions(abFunctions abFunctions) {
+            switch (abFunctions) {
+                case LINEAR:
                     System.out.println("Mondays are bad.");
                     break;
 
-                case 2:
+                case QUADRATIC:
                     System.out.println("Fridays are better.");
                     break;
 
-                case 3:
+                case SINE:
                     System.out.println("Weekends are best.");
                     break;
 
+                case COSINE:
+                    System.out.println("Weekends are best.");
+                    break;
+
+                case INVALID:
+                    System.out.println("Weekends are best.");
+                    break;
 
             }
         }

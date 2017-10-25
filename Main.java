@@ -61,7 +61,7 @@ public class Main {
 
 
                     AreaBtwn linear = new AreaBtwn();
-                    //linear.setLineData(acc, m, low, high, gx, b);
+                    linear.CalcAreaBetween(m, b);
 
                     System.out.println(" Calculating the area of a linear function...");
                     System.out.println(" Your area is " + linear.calcAreaLinear());

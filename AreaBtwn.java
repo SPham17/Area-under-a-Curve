@@ -9,60 +9,86 @@ public class AreaBtwn {
     private double linear;
     private double quadratic;
     private double sine;
+
     private double linearArea;
     private double quadraticArea;
     private double sinArea;
     private double cosArea;
+
     private double length;
     private double width;
     private double D1;
-    
-    
+    private int N;
+    private double Low;
+    private double High;
+    private double B;
+
     ABFunctions abFunctions = new ABFunctions();
 
+    public void resetData() {                                        // that will reset all of the private data in the AreaBtwn object to 0, zero
 
-    void resetData(){                                        // that will reset all of the private data in the AreaBtwn object to 0, zero
-
-    }
-    void setDomain(double low, double high){
-        d1 = Math.abs(low - high);
-       D1 = d1
-                  
-    }
-    void setIterations(int n){
-
-    }
-    double CalcAreaBetween(double m, double b)  {           //This method should call the setLineData, and calcAreaLinear methods
-        
+        length = 0;
+        width = 0;
     }
 
+    public void set_Gx(double b) {
+        this.B = b;
 
-    double CalcAreaBetween(double a, double h, double c){   // This method should call the setQuadraticData, and calcAreaQuadratic methods
 
     }
 
+    public void setDomain(double low, double high) {
 
-    double CalcAreaBetween(ABFunction f, double a, double k, double c, double d, boolean degrees) {
+        double drange = Math.abs(low - high);
+
+        this.D1 = drange;
 
     }
+
+    public void setIterations(int n) {
+        this.N = n;
+
+
+    }
+
+    public double CalcAreaBetween(double m, double b) {           //This method should call the setLineData, and calcAreaLinear methods
+        setIterations(this.N);
+        set_Gx(this.B);
+        setDomain(this.Low, this.High);
+
+        width = D1 / N;
+        length = m * Low + b - B;
+        System.out.println();
+        for (double x = 0; x < N; x++) {
+
+            linear = Math.abs(length + width);
+            Low += width;
+            length = m * Low + b - b;
+
+            this.linearArea += linear;
+        }
+        return linearArea;
+    }
+
+
+   // public double CalcAreaBetween(double a, double h, double c) {   // This method should call the setQuadraticData, and calcAreaQuadratic methods
+
+    //}
+
+
+
+    //public double CalcAreaBetween(abFunctions functions, double a, double k, double c, double d, boolean degrees) {
+
+    //}
 
 
 
 
     private void setLineData(double m, double b) {
 
-        width = D1 / acc;               // gets the width of the small rectangles, divides it by the the amount rectangles to make all the rectangles even
-        length = m * D1 + b - gx;               // gets the length (height) of the small rectangles
 
-        for (double x = 0; x < acc; x++) {       // repeats
-
-            linear = Math.abs(length + width);
-            d1 += width;
-            length = m * d1 + b - gx;
-
-            this.linearArea += linear;
         }
-    }
+
 
     public double calcAreaLinear() {
 
