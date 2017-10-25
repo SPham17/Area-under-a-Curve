@@ -15,7 +15,9 @@ public class AreaBtwn {
     private double cosArea;
     private double length;
     private double width;
-
+    private double D1;
+    
+    
     ABFunctions abFunctions = new ABFunctions();
 
 
@@ -23,13 +25,15 @@ public class AreaBtwn {
 
     }
     void setDomain(double low, double high){
-
+        d1 = Math.abs(low - high);
+       D1 = d1
+                  
     }
     void setIterations(int n){
 
     }
     double CalcAreaBetween(double m, double b)  {           //This method should call the setLineData, and calcAreaLinear methods
-
+        
     }
 
 
@@ -47,8 +51,8 @@ public class AreaBtwn {
 
     private void setLineData(double m, double b) {
 
-        width = (d1 - d2) / acc;               // gets the width of the small rectangles, divides it by the the amount rectangles to make all the rectangles even
-        length = m * d1 + b - gx;               // gets the length (height) of the small rectangles
+        width = D1 / acc;               // gets the width of the small rectangles, divides it by the the amount rectangles to make all the rectangles even
+        length = m * D1 + b - gx;               // gets the length (height) of the small rectangles
 
         for (double x = 0; x < acc; x++) {       // repeats
 
