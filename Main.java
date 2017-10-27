@@ -18,7 +18,9 @@ public class Main {
         double high;
         double gx;
         int n;
+        boolean degrees;
 
+        AreaBtwn function = new AreaBtwn();
 
         System.out.println("Welcome to Calculating the area under a function\n" +
                 "Please select a function");
@@ -53,21 +55,22 @@ public class Main {
                     System.out.println(" higherbound domain = ");
                      high = s.nextDouble();
 
+
+
+
                     System.out.println(" How accurate would you like to be\n" +
                             "acc =");
                      n = s.nextInt();
 
-                    AreaBtwn setDomain = new AreaBtwn();
-                    setDomain.setDomain(low, high);
 
-                    AreaBtwn linear = new AreaBtwn();
-                    linear.CalcAreaBetween(m, b);
+                    function.setIterations(n);
+                    function.setDomain(low, high);
+                    function.CalcAreaBetween(m, b);
 
-                    AreaBtwn iteration = new AreaBtwn();
-                    iteration.setIterations(n);
+
 
                     System.out.println(" Calculating the area of a linear function...");
-                    System.out.println(" Your area is " + linear.CalcAreaBetween(m,b));
+                    System.out.println(" Your area is " + function.CalcAreaBetween(m,b));
 
                     break;
                 }

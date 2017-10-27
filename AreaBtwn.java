@@ -1,54 +1,67 @@
 package com.company;
 
+import com.sun.javafx.geom.transform.BaseTransform;
+
 import java.util.Scanner;
 
 /**
  * Created by 07517pha on 11/10/2017.
  */
 public class AreaBtwn {
-    private double linear;
-    private double quadratic;
-    private double sine;
+    private double area;
 
-    private double linearArea;
-    private double quadraticArea;
-    private double sinArea;
-    private double cosArea;
 
     private double length;
     private double width;
-    private double D1;
+
     private int N;
+    private double Acc;
+
     private double Low;
     private double High;
-    private double B;
 
-    ABFunctions abFunctions = new ABFunctions();
+    private double gx;
+
+    private boolean Degrees;
+    //funtion variables
+    private double M;
+    private double B;
+    private double A;
+    private double C;
+    private double H;
+    private double D;
+    private double K;
+
+    ABFunctions AB;
+
+
+    ABFunctions sc;
 
     public void resetData() {                                        // that will reset all of the private data in the AreaBtwn object to 0, zero
 
         length = 0;
         width = 0;
+        N = 0;
+        Low = 0;
+        High = 0;
+        gx = 0;
+
     }
 
     public void set_Gx(double b) {
-        this.B = b;
+        this.gx = b;
 
 
     }
 
-    public void setDomain(double low, double high) {
+    public void setDomain(double low, double high) {                // sets the domain
 
         this.Low = low;
         this.High = high;
 
-        double drange = Math.abs(this.Low - this.High);
-
-        this.D1 = drange;
-
     }
 
-    public void setIterations(int n) {
+    public void setIterations(int n) {                              // sets number of slices
         this.N = n;
 
 
@@ -57,23 +70,22 @@ public class AreaBtwn {
     public double CalcAreaBetween(double m, double b) {           //This method should call the setLineData, and calcAreaLinear methods
 
         setIterations(this.N);
-        set_Gx(this.B);
+        set_Gx(this.gx);
         setDomain(this.Low, this.High);
 
 
-        this.width = this.Low - this.High / this.N;
-        this.length = m * this.Low + b - this.B;
-        System.out.println(this.width);
+        this.width = (this.High - this.Low) / this.N;
+        this.length = M * this.Low + b - this.gx;
 
         for (double x = 0; x < this.N; x++) {
 
-            linear = Math.abs(this.length + this.width);
+            area = Math.abs(this.length + this.width);
             this.Low += this.width;
-            this.length = m * Low + b - this.B;
+            this.length = m * Low + b - this.gx;
 
-            this.linearArea += linear;
+            this.area += Acc;
         }
-        return this.linearArea;
+        return this.area;
     }
 
 
@@ -90,16 +102,41 @@ public class AreaBtwn {
 
 
 
-    private void setLineData(double m, double b) {
+    private void setLineData(double m, double b) {              // grabs parameters from main. sets datatype from AreaBtwn to refer to the main
 
+        M = m;
+        B = b;
 
         }
 
 
-    public double calcAreaLinear() {
+    private void setQuadraticData(double a, double h, double c) {
 
-        return linearArea;
+        A = a;
+        H = h;
+        C = c;
+
     }
+
+    private void setSinusoidalData(ABFunctions f, double a, double k, double c, double d, boolean degrees){
+
+        A = a;
+        K = k;
+        C = c;
+        D = d;
+        Degrees = degrees;
+        AB = f;
+
+        if (Degrees == false){                          // if user inputs Degrees as false, the turn the domains into radians. if true, leave it as degrees
+            Low = Math.toRadians(Low);
+            High = Math.toRadians(High);
+            setDomain(Low, High);
+        }else{
+            setDomain(Low,High);
+
+    }
+
+}
 }
 
 
