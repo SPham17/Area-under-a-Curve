@@ -17,7 +17,7 @@ public class Main {
         double low;
         double high;
         double gx;
-        double acc;
+        int n;
 
 
         System.out.println("Welcome to Calculating the area under a function\n" +
@@ -35,9 +35,7 @@ public class Main {
 
         while (fx != 5) {
 
-            int menu = s.nextInt();
-
-            switch (menu) {
+            switch (fx) {
                 case 1: {
                     System.out.println(" Please input the slope");
                      m = s.nextDouble();
@@ -57,14 +55,19 @@ public class Main {
 
                     System.out.println(" How accurate would you like to be\n" +
                             "acc =");
-                     acc = s.nextDouble();
+                     n = s.nextInt();
 
+                    AreaBtwn setDomain = new AreaBtwn();
+                    setDomain.setDomain(low, high);
 
                     AreaBtwn linear = new AreaBtwn();
                     linear.CalcAreaBetween(m, b);
 
+                    AreaBtwn iteration = new AreaBtwn();
+                    iteration.setIterations(n);
+
                     System.out.println(" Calculating the area of a linear function...");
-                    System.out.println(" Your area is " + linear.calcAreaLinear());
+                    System.out.println(" Your area is " + linear.CalcAreaBetween(m,b));
 
                     break;
                 }

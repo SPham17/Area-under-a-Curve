@@ -39,7 +39,10 @@ public class AreaBtwn {
 
     public void setDomain(double low, double high) {
 
-        double drange = Math.abs(low - high);
+        this.Low = low;
+        this.High = high;
+
+        double drange = Math.abs(this.Low - this.High);
 
         this.D1 = drange;
 
@@ -52,22 +55,25 @@ public class AreaBtwn {
     }
 
     public double CalcAreaBetween(double m, double b) {           //This method should call the setLineData, and calcAreaLinear methods
+
         setIterations(this.N);
         set_Gx(this.B);
         setDomain(this.Low, this.High);
 
-        width = D1 / N;
-        length = m * Low + b - B;
-        System.out.println();
-        for (double x = 0; x < N; x++) {
 
-            linear = Math.abs(length + width);
-            Low += width;
-            length = m * Low + b - b;
+        this.width = this.Low - this.High / this.N;
+        this.length = m * this.Low + b - this.B;
+        System.out.println(this.width);
+
+        for (double x = 0; x < this.N; x++) {
+
+            linear = Math.abs(this.length + this.width);
+            this.Low += this.width;
+            this.length = m * Low + b - this.B;
 
             this.linearArea += linear;
         }
-        return linearArea;
+        return this.linearArea;
     }
 
 
