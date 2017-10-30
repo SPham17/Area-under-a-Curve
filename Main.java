@@ -5,146 +5,263 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+                                // initializing variables for all cases
+        double a;               // vertical stretch
+        double b;               // y - intercept
+        double c;               // c value
+        double d;               // d value
+        double k;               // k value
+        double m;               // slope value
+        double h;               // h value
 
-        double a; // initializing variables for all cases
-        double b;
-        double c;
-        double d;
-        double k;
-        double m;
-        double h;
+        double low;             // lowerbound domain
+        double high;            // higherbound domain
+        double gx;              // gx value
+        int n;                  // number of slices
 
-        double low;
-        double high;
-        double gx;
-        int n;
-        boolean degrees;
+        int deg;             // choice for degrees or rad (userinput
+        boolean degrees;        // degrees or rad, true or false
 
-        AreaBtwn function = new AreaBtwn();
+        int choice;             // choice to continue or leave (userinput)
+        boolean cont = true;    // continue or leave, true or false
 
-        System.out.println("Welcome to Calculating the area under a function\n" +
-                "Please select a function");
-
-        System.out.println("1. Linear: f(x) = mx + b \n" +
-                "2. Quadratic: f(x) = a ( x - h )^2 + c \n" +
-                "3. Sinusoidal: Sine: f(x) = a (sin ( k ( x - c)) + d\n" +
-                "4. Sinusoidal: Cosine: f(x) = a ( cos ( k ( x - c )) + d\n" +
-                "5. Quit\n");
-        Scanner s = new Scanner(System.in);
-
-        int fx = s.nextInt();
+        int ch;                 // choice to start or not (userinput)
+        boolean start = true;   // start or leave, true or false
 
 
-        while (fx != 5) {
+        ABFunctions f;                      // access enumerated types
+        AreaBtwn function = new AreaBtwn(); // access AreaBtwn Class
 
-            switch (fx) {
-                case 1: {
+        Scanner s = new Scanner(System.in); // scanner allowing userinput
+
+        //----------------------------------------------------------------------------
+
+        System.out.println("Welcome to Calculating the area under a function");
+
+        System.out.println("Would you like to start?\n 1. Yes\n 2. No");
+
+        while (start){
+
+            ch = s.nextInt();
+
+            if (ch == 2) {
+                System.out.println(" Have a nice day! ");
+           break;}
+
+           if (ch == 1){
+               System.out.println("Lets get started!\n");
+                start = false;
+            }
+
+
+        while (cont) { // will continue loop again if true
+            function.resetData();
+
+            System.out.println("Please select a function");
+            System.out.println("1. Linear: f(x) = mx + b \n" +
+                    "2. Quadratic: f(x) = a ( x - h )^2 + c \n" +
+                    "3. Sinusoidal: Sine: f(x) = a (sin ( k ( x - d)) + c\n" +
+                    "4. Sinusoidal: Cosine: f(x) = a ( cos ( k ( x - d )) + c\n");
+
+
+
+            int fx = s.nextInt();
+            switch (fx) {                                         // user decides which function to choose
+                case 1:                                           // each case accesses the enumerated variable, f, and specifies their function
+                    f = ABFunctions.LINEAR;
+                    break;
+                case 2:
+                    f = ABFunctions.QUADRATIC;
+                    break;
+                case 3:
+                    f = ABFunctions.SINE;
+                    break;
+                case 4:
+                    f = ABFunctions.COSINE;
+                    break;
+                default:
+                    f = ABFunctions.INVALID;
+            }
+            switch (f) {
+                case LINEAR: {                                      // refers to the previous choice
                     System.out.println(" Please input the slope");
-                     m = s.nextDouble();
+                    m = s.nextDouble();
 
                     System.out.println(" Please input your y-intercept");
-                     b = s.nextDouble();
+                    b = s.nextDouble();
+
 
                     System.out.println(" What is the value of g(x)?");
-                     gx = s.nextDouble();
+                    gx = s.nextDouble();
 
                     System.out.println(" Set two domains\n " +
                             "lowerbound domain = ");
-                     low = s.nextDouble();
+                    low = s.nextDouble();
 
                     System.out.println(" higherbound domain = ");
-                     high = s.nextDouble();
-
-
-
+                    high = s.nextDouble();
 
                     System.out.println(" How accurate would you like to be\n" +
                             "acc =");
-                     n = s.nextInt();
+                    n = s.nextInt();
 
-
-                    function.setIterations(n);
                     function.setDomain(low, high);
-                    function.CalcAreaBetween(m, b);
-
-
+                    function.setIterations(n);
+                    function.set_Gx(gx);
 
                     System.out.println(" Calculating the area of a linear function...");
-                    System.out.println(" Your area is " + function.CalcAreaBetween(m,b));
+                    function.CalcAreaBetween(m, b);
 
                     break;
                 }
-                case 2:
+                case QUADRATIC:
                     System.out.println(" Please input an a value");
-                     a = s.nextDouble();
+                    a = s.nextDouble();
 
-
-                    System.out.println(" What is the value of g(x)?");
-                     gx = s.nextDouble();
+                    System.out.println(" Please  input an h value");
+                    h = s.nextDouble();
 
                     System.out.println(" Please set a c value");
-                     c = s.nextDouble();
+                    c = s.nextDouble();
+
+                    System.out.println(" What is the value of g(x)?");
+                    gx = s.nextDouble();
 
                     System.out.println(" Set two domains\n " +
                             "lowerbound domain = ");
-                     low = s.nextDouble();
+                    low = s.nextDouble();
 
                     System.out.println(" higherbound domain = ");
-                     high = s.nextDouble();
+                    high = s.nextDouble();
+
+                    System.out.println(" How accurate would you like to be\n" +
+                            "acc =");
+                    n = s.nextInt();
+
+                    function.setDomain(low, high);
+                    function.setIterations(n);
+                    function.set_Gx(gx);
 
 
-                case 3:
+                    System.out.println(" Calculating the area of a quadratic function...");
+                    function.CalcAreaBetween(a, h, c);
+
+                    break;
+                case SINE:
                     System.out.println(" Please input an a value");
-                     a = s.nextDouble();
-
-
-                    System.out.println(" What is the value of g(x)?");
-                     gx = s.nextDouble();
-
-                    System.out.println(" Please set a c value");
-                     c = s.nextDouble();
+                    a = s.nextDouble();
 
                     System.out.println(" Please set a k value");
-                     k = s.nextDouble();
+                    k = s.nextDouble();
 
                     System.out.println(" Please set a d value");
-                     d = s.nextDouble();
-
-                    System.out.println(" Set two domains\n " +
-                            "lowerbound domain = ");
-                     low = s.nextDouble();
-
-                    System.out.println(" higherbound domain = ");
-                     high = s.nextDouble();
-
-                case 4:
-                    System.out.println(" Please input an a value");
-                     a = s.nextDouble();
+                    d = s.nextDouble();
 
                     System.out.println(" Please set a c value");
-                     c = s.nextDouble();
-
-                    System.out.println(" Please set a k value");
-                     k = s.nextDouble();
-
-                    System.out.println(" Please set a d value");
-                     d = s.nextDouble();
+                    c = s.nextDouble();
 
                     System.out.println(" What is the value of g(x)?");
-                     gx = s.nextDouble();
+                    gx = s.nextDouble();
+
+                    System.out.println(" Set two domains\n " +
+                            "lowerbound domain = ");
+                    low = s.nextDouble();
+
+                    System.out.println(" higherbound domain = ");
+                    high = s.nextDouble();
+
+                    System.out.println(" How accurate would you like to be\n" +
+                            "acc =");
+                    n = s.nextInt();
+
+                    System.out.println(" Would you like to use degrees or radiant?\n" +
+                            "1. Degrees\n" +
+                            "2. Radiant");
+                    deg = s.nextInt();
+
+                    if (deg == 1) {
+                        degrees = true;
+                    } else {
+                        degrees = false;
+                    }
+
+                    System.out.println(" Degrees = " + degrees + "\n");
+
+                    function.setDomain(low, high);
+                    function.setIterations(n);
+                    function.set_Gx(gx);
+
+                    System.out.println(" Calculating the area of a sinusoidal function...");
+                    function.CalcAreaBetween(f, a, c, k, d, degrees);
+
+                    break;
+                case COSINE:
+                    System.out.println(" Please input an a value");
+                    a = s.nextDouble();
+
+                    System.out.println(" Please set a k value");
+                    k = s.nextDouble();
+
+                    System.out.println(" Please set a d value");
+                    d = s.nextDouble();
+
+                    System.out.println(" Please set a c value");
+                    c = s.nextDouble();
+
+                    System.out.println(" What is the value of g(x)?");
+                    gx = s.nextDouble();
 
                     System.out.println(" Set two domains\n " +
                             "lowerbound domain = ");
 
-                     low = s.nextDouble();
+                    low = s.nextDouble();
 
                     System.out.println(" higherbound domain = ");
-                     high = s.nextDouble();
+                    high = s.nextDouble();
 
-                case 5:
+                    System.out.println(" How accurate would you like to be\n" +
+                            "acc =");
+                    n = s.nextInt();
+
+                    System.out.println(" Would you like to use degrees or radiant?\n" +
+                            "1. Degrees\n" +
+                            "2. Radiant");
+
+                    deg = s.nextInt();
+                    if (deg == 1) {
+                        degrees = true;
+                    } else {
+                        degrees = false;
+                    }
+
+                    System.out.println(" Degrees = " + degrees + "\n");
+
+                    function.setDomain(low, high);
+                    function.setIterations(n);
+                    function.set_Gx(gx);
+
+                    System.out.println(" Calculating the area of a sinusoidal function...");
+                    function.CalcAreaBetween(f, a, c, k, d, degrees);
+
+                    break;
+                case INVALID: {
+                    System.out.println(" INVALID ");
+                }
+            }
+
+            System.out.println(" Would you like to continue?\n" +
+                    "1. Yes\n" +
+                    "2. No");
+
+            choice = s.nextInt();
+
+            if (choice == 1) {
+                cont = true;
+            }
+            if (choice == 2){
+                cont = false;
+                }
             }
         }
-
-    }
-}
+    }}
 
