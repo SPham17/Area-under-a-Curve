@@ -1,2 +1,2 @@
-# Area-under-a-Cutve
+# Area-under-a-Curve
 ICS 4UI
